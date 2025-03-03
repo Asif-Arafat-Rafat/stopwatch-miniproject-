@@ -1,33 +1,20 @@
 import { useState } from "react";
-
+import Stopwatch from "./stopwatch";
+import Timer from "./timer";
+import Alarm from "./alarm";
  
 function App() {
-  const [hour,setHour]=useState(0);
-  const [min,setMin]=useState(0);
-const [msec,setMsec]=useState(0);
-const [sec,setSec]=useState(0);
-  function startSW(){
-    setInterval(()=>{
-      setMsec((prevMsec)=>prevMsec+1);
-      if( msec===100){
-        setSec(sec+1);
-        setMsec(0);
-      }
-      if(sec===60){
-        setMin(min+1);
-        setSec(0);
-      }
-      if(min===60){
-        setHour(hour+1);
-        setMin(0);
-      }
-    },10)
-  }
+  const [ctype, setCtype] = useState("stopwatch");
   return (
     <>
-      <h1 className="underline text-5xl text-center">Stopwatch</h1>
-      <h1 className="text-center text-6xl bg-amber-100">{hour===0?"00": hour}:{min===0?"00":min}:{sec===0?"00":sec}:{msec%100}</h1>
-      <div className="flex justify-center"><button className="bg-green-400 w-24 h-12 rounded-lg text-2xl m-2" onClick={startSW}>Start</button></div>
+    
+      {ctype!="stopwatch" &&<button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={()=>setCtype("stopwatch")}>Stopwatch</button>}
+      {ctype!="timer" &&<button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={()=>setCtype("timer")}>Timer</button>}
+      {ctype!="alarm" &&<button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={()=>setCtype("alarm")}>Alarm</button>}
+
+      {ctype==="stopwatch" && <Stopwatch/>}
+      {ctype==="timer" && <Timer/>}
+      {ctype==="alarm" && <Alarm/>}
     </>
   )
 }
