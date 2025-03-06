@@ -45,7 +45,7 @@ function stopwatch(){
                     </div>
             <div >
                 {lap.map((l,index)=>{
-                    return <div className="flex justify-center items-end gap-3" key={index}><p className="text-4xl text-white">{("0"+Math.floor(l/360000)%60).slice(-2)}:{("0"+Math.floor(l/60000)%60).slice(-2)}:{("0"+Math.floor(l/1000)%60).slice(-2)}</p><p className="text-2xl text-white">{("0"+Math.floor(l/10)%100).slice(-2)}</p> <button className="text-white" onClick={()=>removelap(index)}>X</button></div>
+                    return <div className="flex justify-center items-end gap-3" key={index}><p className="text-4xl text-white">{("0"+Math.floor(l/360000)%60).slice(-2)}:{("0"+Math.floor(l/60000)%60).slice(-2)}:{("0"+Math.floor(l/1000)%60).slice(-2)}</p><p className="text-2xl text-white">{("0"+Math.floor(l/10)%100).slice(-2)}</p> <button className="text-black text-2xl bg-amber-50 px-3 py-0.5 border-[0.5] rounded-2xl mb-1" onClick={()=>removelap(index)}>x</button></div>
                 })}
             </div>
         </div>
