@@ -15,9 +15,8 @@ function Timer() {
         }) 
       },10)
     }
-    else{
-      return clearInterval(interval)
-    }
+      return ()=>clearInterval(interval)
+ 
   },[isActive])
   return (
     <>        
@@ -42,7 +41,10 @@ function Timer() {
             <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-2xl px-10 py-5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"onClick={() => {setTime(time - 1 * 1000);}}>-</button>
           </div>
         </div>
-        <button className="px-4 py-2 bg-blue-500 text-4xl" onClick={()=>{setIsActive(true)}}>Start</button>
+        {!isActive && <button className="px-4 py-2 bg-blue-500 text-4xl" onClick={()=>{setIsActive(true)}}>Start</button>}        
+        {isActive && <div><button className="px-4 py-2 bg-red-500 text-4xl" onClick={()=>{setIsActive(false)}}>Stop</button> <button className="px-4 py-2 bg-blue-500 text-4xl" onClick={()=>{setIsActive(false);
+          setTime(0);
+        }}>Reset</button></div>}
     </div>
 
     </>
