@@ -33,7 +33,7 @@ function stopwatch(){
  
     return (
         <><div className="flex justify-center">
-            <div className="border-6 w-2xl border-y-zinc-400 border-x-yellow-900 rounded-4xl p-10">
+            <div className="border-6 w-2xl border-y-blue-400 border-x-yellow-900 rounded-4xl p-10">
                     <h1 className=" pb-10 text-white text-5xl text-center">Stopwatch</h1>
                     <div className="flex justify-center items-center gap-3">
                         <h1 className="text-center text-6xl text-white pb-10">{("0"+Math.floor((time/360000)%60)).slice(-2)}:{("0"+Math.floor((time/60000)%60)).slice(-2)}:{("0"+Math.floor((time/1000)%60)).slice(-2)}</h1><h1 className="text-white text-4xl">{("0"+Math.floor((time/10)%100)).slice(-2)}</h1>
